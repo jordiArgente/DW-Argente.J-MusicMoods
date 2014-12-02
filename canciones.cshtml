@@ -21,6 +21,13 @@
     <link href="css/plugins/morris.css" rel="stylesheet">
     <link href="fonts/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+
+    <script lang="ja">
+        function confirmarBorrado () {
+            return confirm("Se borrara el dato seleccionado.");
+        }
+    </script>
+
 </head>
 
 <body>
@@ -83,7 +90,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.php">General</a>
+                                <i class="fa fa-dashboard"></i>  <a href="Default">General</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-play"></i> Canciones
@@ -126,7 +133,7 @@
                                         <td>@row.fechaAdd</td>
 						                <td style="width:175px">
 							                <a class="btn btn-success" href="editar/@row.Id">Editar</a>
-							                <a class="btn btn-danger" href="delete/@row.Id">Eliminar</a>
+							                <a class="btn btn-danger" onclick="return confirmarBorrado()" href="delete/@row.Id">Eliminar</a>
 						                </td>
 					                </tr>
 				                }

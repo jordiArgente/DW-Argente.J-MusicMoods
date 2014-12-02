@@ -1,32 +1,15 @@
 ﻿@{
 	var id = UrlData[0];
 	if(id.IsEmpty()) {
-		Response.Redirect(Href("~/default"));
-	}
-    
-	var db = Database.Open("AdminMusicMoods");
-
-	var sqlSelect = "SELECT * FROM canciones WHERE id = @0";
-	var cancion = db.QuerySingle(sqlSelect, id);
+		Response.Redirect(Href("~/canciones"));
+	}else{
+        if(WebSecurity.IsAuthenticated){
+            var db = Database.Open("AdminMusicMoods");
+	        var sqlSelect = "DELETE FROM canciones WHERE id = @0";
+	        var cancion = db.QuerySingle(sqlSelect, id);
+            Response.Redirect(Href("~/canciones"));
+        }else{
+            Response.Redirect("~/login");
+        }
+    }
 }
-
-<!DOCTYPE html>
-
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Eliminar Canción</title>
-    </head>
-    <body>
-		<h1>Eliminar Canción</h1>
-		<p>Estas seguro de que quieres eliminar la canción @id, @cancion.titulo @cancion.autor?</p>
-		
-		<form action="" method="post">
-			<input type="button"
-					onclick="document.location.href='@Href("~/canciones")';"
-					value="Cancelar" />
-			<input type="submit" value="Eliminar" />
-		</form>
-		        
-    </body>
-</html>

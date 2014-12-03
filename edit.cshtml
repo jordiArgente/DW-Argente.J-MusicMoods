@@ -13,14 +13,14 @@
 	var db = Database.Open("AdminMusicMoods");
 
 	if (IsPost) {
-		titulo = Request["Nombre"];
-		autor = Request["Apellidos"];
-		age = Request["FechaNacimiento"];
-		estilo = Request["Email"];
+		titulo = Request["titulo"];
+		autor = Request["autor"];
+		age = Request["age"];
+		estilo = Request["estilo"];
 
 		var sqlCommand = "UPDATE canciones SET titulo = @0, autor = @1, " +
-						"age = @2, estilo = @4 " +
-						"WHERE id = @5";
+						"age = @2, estilo = @3 " +
+						"WHERE id = @4";
 
 		db.Execute(sqlCommand, titulo, autor, age, estilo, id);
 
@@ -46,10 +46,10 @@
 
     <title>Administracion - Music Moods</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/sb-admin.css" rel="stylesheet">
-    <link href="css/plugins/morris.css" rel="stylesheet">
-    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/sb-admin.css" rel="stylesheet">
+    <link href="~/css/plugins/morris.css" rel="stylesheet">
+    <link href="~/fonts/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 </head>
 

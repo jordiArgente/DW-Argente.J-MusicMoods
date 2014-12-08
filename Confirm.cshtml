@@ -1,13 +1,13 @@
 ﻿@{
 	var id = UrlData[0];
 	if(id.IsEmpty()) {
-		Response.Redirect(Href("~/Canciones"));
+		Response.Redirect(Href("~/CancionesPendientes"));
 	}else{
         if(WebSecurity.IsAuthenticated){
             var db = Database.Open("AdminMusicMoods");
-	        var sqlSelect = "DELETE FROM canciones WHERE id = @0";
+	        var sqlSelect = "UPDATE canciones SET pendiente = 'no' WHERE id = @0";
 	        var cancion = db.QuerySingle(sqlSelect, id);
-            Response.Redirect(Href("~/Canciones"));
+            Response.Redirect(Href("~/CancionesPendientes"));
         }else{
             Response.Redirect("~/Login");
         }

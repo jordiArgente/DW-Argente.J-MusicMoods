@@ -1,0 +1,50 @@
+﻿@functions
+{
+    public static int GetPendientes()
+	{
+        var db = Database.Open("AdminMusicMoods");
+        var CancionesPendientes = (int)db.QueryValue("SELECT count(*) FROM canciones WHERE pendiente = 'si'");
+
+		return CancionesPendientes;
+	}
+
+    public static int GetTotalReproducciones()
+	{
+        var db = Database.Open("AdminMusicMoods");
+        var TotalReproducciones = (int)db.QueryValue("SELECT SUM(numReproducciones) FROM canciones");
+
+		return TotalReproducciones;
+	}
+
+    public static int GetNumCancionPopular()
+	{
+        var db = Database.Open("AdminMusicMoods");
+        var NumCancionPopular = (int)db.QueryValue("SELECT MAX(numReproducciones) FROM canciones");
+
+		return NumCancionPopular;
+	}
+
+    public static string GetCancionPopular()
+	{
+        var db = Database.Open("AdminMusicMoods");
+        var CancionPopular = (string)db.QueryValue("SELECT TOP 1 titulo FROM canciones ORDER BY numReproducciones DESC");
+
+		return CancionPopular;
+	}
+
+    public static int GetNumEstiloPopular()
+	{
+        var db = Database.Open("AdminMusicMoods");
+        var NumEstiloPopular = (int)db.QueryValue("SELECT TOP 1 SUM(numReproducciones) AS Suma FROM canciones GROUP BY estilo ORDER BY Suma DESC");
+
+		return NumEstiloPopular;
+	}
+
+    public static string GetEstiloPopular()
+	{
+        var db = Database.Open("AdminMusicMoods");
+        var EstiloPopular = (string)db.QueryValue("SELECT estilo, SUM(numReproducciones) AS Suma FROM canciones GROUP BY estilo ORDER BY Suma DESC");
+
+		return EstiloPopular;
+	}
+}   

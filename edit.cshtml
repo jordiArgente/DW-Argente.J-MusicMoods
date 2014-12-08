@@ -2,7 +2,7 @@
 	var id = UrlData[0];
 	if(id.IsEmpty())
 	{
-		Response.Redirect(Href("~/canciones"));
+		Response.Redirect(Href("~/Canciones"));
 	}
     
 	var titulo = "";
@@ -24,7 +24,7 @@
 
 		db.Execute(sqlCommand, titulo, autor, age, estilo, id);
 
-		Response.Redirect(@Href("~/canciones"));
+		Response.Redirect(@Href("~/Canciones"));
 	}
 
 	//var db = Database.Open("DatosDemo");
@@ -37,20 +37,8 @@
 <html lang="en">
 
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Administracion - Music Moods</title>
-
-    <link href="~/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/css/sb-admin.css" rel="stylesheet">
-    <link href="~/css/plugins/morris.css" rel="stylesheet">
-    <link href="~/fonts/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <!-- Importación del Head -->
+    @RenderPage("~/layout/_ImportHead.cshtml")
 </head>
 
 <body>
@@ -69,10 +57,10 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="default">General</a>
+                                <i class="fa fa-dashboard"></i>  <a href="~/Default">General</a>
                             </li>
                             <li>
-                                <i class="fa fa-play"></i>  <a href="canciones">Canciones</a>
+                                <i class="fa fa-play"></i>  <a href="~/Canciones">Canciones</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-plus"></i> Editar
@@ -103,7 +91,7 @@
 						    </div>
 						    <div class="form-group">
 				    			<button type="submit" class="btn btn-success">Editar</button>
-								<a class="btn" href="~/canciones">Atras</a>
+								<a class="btn" href="~/Canciones">Atras</a>
 							</div>
 						</form>                    		
                     </div>
@@ -115,12 +103,5 @@
         <!-- /#page-wrapper -->
     </div>
     <!-- /#wrapper -->
-    
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
 </body>
 </html>

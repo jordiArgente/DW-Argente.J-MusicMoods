@@ -1,0 +1,6 @@
+Datos login:
+
+Usuario: admin
+Clave: 123
+
+Una vez dentro tiene la opcion para registrar más administradores.
